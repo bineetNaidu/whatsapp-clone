@@ -1,4 +1,6 @@
 import React from 'react';
+import Sidebar from './Sidebar';
+import Chat from './Chat';
 
 // STATICS
 import './App.css';
@@ -6,7 +8,11 @@ import './App.css';
 function App() {
   return (
     <div className="app">
-      <h1>Yo! Lets Build A MERN stack Whatsapp Clone.</h1>
+      <div className="app__body">
+        <Sidebar />
+        <Chat />
+      </div>
+      {/* Chat component */}
     </div>
   );
 }
