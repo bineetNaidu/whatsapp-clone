@@ -4,9 +4,20 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const logger = require('morgan');
+const mongoose = require('mongoose');
 
 // APP CONFIGS
 const app = express();
+
+mongoose
+  .connect(process.env.DB_CONNECTION, {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    keepAlive: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log('MONGO_DB CONNECTED'))
+  .catch((err) => console.log(err.message));
 
 // MIDDLEWARES
 app.use(logger('dev'));
