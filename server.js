@@ -9,6 +9,9 @@ const mongoose = require('mongoose');
 // APP CONFIGS
 const app = express();
 
+const apiRoute = require('./routers');
+
+mongoose.Promise = global.Promise;
 mongoose
   .connect(process.env.DB_CONNECTION, {
     useCreateIndex: true,
@@ -17,7 +20,10 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => console.log('MONGO_DB CONNECTED'))
-  .catch((err) => console.log(err.message));
+  .catch((err) => {
+    console.log(err.message);
+    process.exit(1);
+  });
 
 // MIDDLEWARES
 app.use(logger('dev'));
@@ -31,6 +37,8 @@ app.get('/', (req, res) => {
     message: 'Hello Whatsapp Clone',
   });
 });
+
+app.use('/api/v1/messages', apiRoute);
 
 // LISTENERS
 app.listen(process.env.PORT, () =>
