@@ -10,11 +10,11 @@ import SidebarChat from './SidebarChat';
 // STATICS
 import './Sidebar.css';
 
-const Sidebar = () => {
+const Sidebar = ({ photo }) => {
   return (
     <div className="sidebar">
       <div className="sidebar__header">
-        <Avatar src="https://avatars0.githubusercontent.com/u/66471461?v=4" />
+        <Avatar src={photo} />
         <div className="sidebar__headerRight">
           <IconButton>
             <DonutLargeIcon />

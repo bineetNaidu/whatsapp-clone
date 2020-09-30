@@ -13,16 +13,16 @@ import Moment from 'react-moment';
 // STATICS
 import './Chat.css';
 
-const Chat = ({ messages }) => {
+const Chat = ({ messages, name }) => {
   // HOOKS
   const [msg, handleMsg, resetMsg] = useFormState('');
   // functions
   const sendMessage = async (e) => {
     e.preventDefault();
     await axios.post('/new', {
-      name: 'Bineet',
+      name,
       message: msg,
-      received: true,
+      received: name ? true : false,
     });
     resetMsg();
   };

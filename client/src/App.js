@@ -8,9 +8,11 @@ import { PUSHER_CLUSTER, PUSHER_KEY } from './env';
 
 // STATICS
 import './App.css';
+import Signin from './Signin';
 function App() {
   // STATES
   const [messages, setMessages] = useState([]);
+  const [user, setUser] = useState(null);
 
   // HOOKS
   useEffect(() => {
@@ -44,8 +46,14 @@ function App() {
   return (
     <div className="app">
       <div className="app__body">
-        <Sidebar />
-        <Chat messages={messages} />
+        {user ? (
+          <>
+            <Sidebar photo={user.photo} />
+            <Chat messages={messages} name={user.name} />
+          </>
+        ) : (
+          <Signin setUser={setUser} />
+        )}
       </div>
       {/* Chat component */}
     </div>

@@ -1,0 +1,25 @@
+.signin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  color: gray;
+}
+
+.signin > button {
+  margin-top: 3rem;
+  padding: 8px 5rem;
+  border-radius: 6px;
+  border: 0;
+  outline-width: 0;
+  background: #8dff8d;
+  font-size: larger;
+  cursor: pointer;
+  animation: all 0.5s ease;
+}
+
+.signin > button:hover {
+  background: #68da68;
+  transform: scale(1.1);
+}
